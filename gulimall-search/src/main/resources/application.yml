@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8333
+        port: 8719
+
+  rabbitmq:
+    host: 192.168.56.10
+    listener:
+      direct:
+        acknowledge-mode: manual
+    virtual-host: /
+
+  # 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

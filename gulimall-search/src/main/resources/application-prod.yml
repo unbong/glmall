@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: sentinal-service.gulimall:8333
+        port: 8719
+
+  rabbitmq:
+    host: rabbitmq.gulimall
+    listener:
+      direct:
+        acknowledge-mode: manual
+    virtual-host: /
+  # 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 8080

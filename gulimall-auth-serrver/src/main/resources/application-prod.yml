@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: gulimall-auth-server
+  cloud:
+    nacos:
+      discovery:
+          server-addr: nacos-service.gulimall:8848
+
+    # 熔断降级设定
+    sentinel:
+      transport:
+        dashboard: sentinal-service.gulimall:8333
+        port: 8719
+
+
+  redis:
+          host: redis5-0-7.gulimall
+  session:
+    store-type: redis
+  thymeleaf:
+    cache: false
+
+
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30m
+
+
+# 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

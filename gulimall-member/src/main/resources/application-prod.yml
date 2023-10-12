@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://mysql-master.gulimall:3306/gulimall_ums
+    driver-class-name: com.mysql.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-service.gulimall:8848
+    # 熔断降级设定
+    sentinel:
+      transport:
+        dashboard: sentinal-service.gulimall:8333
+        port: 8719
+
+  application:
+    name: gulimall-member
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+server:
+  port: 8080
+
+
+# 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

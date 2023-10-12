@@ -1,0 +1,65 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://mysql-master.gulimall:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-service.gulimall:8848
+
+
+    # 熔断降级设定
+    sentinel:
+      transport:
+        dashboard: sentinal-service.gulimall:8333
+        port: 8719
+
+  rabbitmq:
+    host: rabbitmq.gulimall
+    #    username: niceseason
+    #    password: mo19960729
+    listener:
+      simple:
+        acknowledge-mode: manual
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
+  redis:
+    host: redis5-0-7.gulimall
+  session:
+    store-type: redis
+
+# 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 30m
+logging:
+  level:
+    com.atguigu.gulimall: info
+
+# 开启调用方熔断
+feign:
+  sentinel:
+    enabled: true
+
+

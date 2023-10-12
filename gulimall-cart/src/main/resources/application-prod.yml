@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gulimall-cart
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-service.gulimall:8848
+    sentinel:
+      transport:
+        dashboard: sentinal-service.gulimall:8333
+        port: 8719
+
+
+
+  thymeleaf:
+    cache: false
+  redis:
+    host: redis5-0-7.gulimall
+
+# 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

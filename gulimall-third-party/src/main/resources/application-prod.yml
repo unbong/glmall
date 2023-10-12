@@ -1,0 +1,48 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-service.gulimall:8848
+    # 熔断降级设定
+    sentinel:
+      transport:
+        dashboard: sentinal-service.gulimall:8333
+        port: 8719
+  rabbitmq:
+    host: rabbitmq.gulimall
+    listener:
+      direct:
+        acknowledge-mode: manual
+    virtual-host: /
+
+
+
+  application:
+    name: gulimall-third-party
+  couchbase:
+
+  # 信息审计模块的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+
+cloud:
+  aws:
+    credentials:
+      access-key: XXX
+      secret-key: XXXX
+    region:
+      static: ap-northeast-1
+      auto: false
+    stack:
+      auto: false
+application:
+  bucket:
+    name: gulimall-image
+
+server:
+  port: 8080
